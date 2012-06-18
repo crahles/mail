@@ -240,6 +240,12 @@ describe "reading emails with attachments" do
       result.should eq expected
     end
 
+    it "should find an attachment that has umlauts in filename" do
+      mail = Mail.read(fixture(File.join('emails', 'attachment_emails', 'attachment_with_umlauts_in_filename.eml')))
+      mail.attachments.length.should eq 1
+      mail.attachments[0].filename.should eq '2393101_oau.jpg'
+    end
+
     it "should find attachments inside parts with content-type message/rfc822" do
       mail = Mail.read(fixture(File.join("emails",
                                          "attachment_emails",
