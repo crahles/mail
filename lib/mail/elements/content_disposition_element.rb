@@ -25,7 +25,7 @@ module Mail
 
     def cleaned(string)
       string =~ /(.+);\s*$/ ? $1 : string
-      string.mb_chars.normalize(:kd).gsub(/[^x00-\x7F,\s,\.]/n, '').to_s
+      string.mb_chars.gsub(/[^x00-\x7F,\s,\.]/n, '').to_s
     end
 
   end
